@@ -4,6 +4,7 @@ let scoreDisplay = document.querySelector('#score-display');
 let userAnswer = document.querySelector('#user-answer');
 let statusMessage = document.querySelector('#status-message');
 let overlay = document.querySelector('#overlay');
+let question = document.querySelector('#question');
 
 overlay.getElementsByClassName.display = 'name';
 
@@ -83,7 +84,7 @@ let readJeopardyData = async () => {
                          answer = "";
                          userAnswer.value = "";
 
-                    }else if(userAnswer.value.toUpperCase() = 'yo no see' && !questionDisplay.innerText.incudes('wrong') && !questionDisplay.innertext.incudes('correct')){
+                    }else if(userAnswer.value.toUpperCase() === 'yes' && !questionDisplay.innerText.incudes('wrong') && !questionDisplay.innertext.incudes('correct')){
                           totalScore -= 50;
                           scoreDisplay.innerText = totalScore;
 
