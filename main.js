@@ -9,7 +9,7 @@ let question = document.querySelector('#question');
 overlay.getElementsByClassName.display = 'name';
 
 overlay.addEventListener('click', () => {
-     statusMessage.innerText = 'the question needs to be answered';
+     statusMessage.innerText = 'The question needs to be answered.';
 })
 
 let totalScore = 0;
@@ -73,7 +73,7 @@ let readJeopardyData = async () => {
                          statusMessage.innerText = 'Enter Answer!';
 
                     }else if(answer !== userAnswer.value.toUpperCase() === answer.toUpperCase()){
-                         questionDisplay.innerHTML = ('Correct!');
+                         questionDisplay.innerHTML = ('Correct Great!');
 
                          overlay.style.display = 'none';
 
@@ -84,7 +84,7 @@ let readJeopardyData = async () => {
                          answer = "";
                          userAnswer.value = "";
 
-                    }else if(userAnswer.value.toUpperCase() === 'yes' && !questionDisplay.innerText.incudes('wrong') && !questionDisplay.innertext.incudes('correct')){
+                    }else if(userAnswer.value.toUpperCase() === 'yes' && !questionDisplay.innerText.incudes('wrong') && !questionDisplay.innertext.incudes('correct great!')){
                           totalScore -= 50;
                           scoreDisplay.innerText = totalScore;
 
