@@ -8,7 +8,7 @@ let question = document.querySelector('#question');
 let answerForm = document.querySelector("#answer-form");
 
 let CURR_ANSWER = "";
-let POINTS = "";
+let POINTS = 0;
 
 overlay.getElementsByClassName.display = 'name';
 
@@ -35,7 +35,7 @@ let readJeopardyData = async () => {
      let groupedData = _.groupBy(data, 'value');
 
      console.log(groupedData);
-     console.log(groupedData.$200);
+     //console.log(groupedData.$200);
 
 
      questionItem.forEach(item => {
@@ -51,10 +51,15 @@ let readJeopardyData = async () => {
 
                item.classList.add('selected');
                console.log(item.innerText);
+               //add comma for $1600 -> $1,600 otherwise 
+               // look up in grouped data doesn't work
+               if (item.innerText.length === 5){
+                    item.innerText = item.innerText.slice(0, 2) + "," + item.innerText.slice(2, 5);
+               }
 
-               console.log(`${groupedData[item.innerText]}Question Worth {item.innerText}`);
+               console.log(groupedData["$1,600"]);
 
-               randomQuestionObj = groupedData[item.innerText][Math.floor(Math.random())];
+               randomQuestionObj = groupedData[item.innerText][Math.floor(Math.random() * 100)];
                question = randomQuestionObj['question'];
                CURR_ANSWER = randomQuestionObj['answer'];
                console.log(question);
@@ -81,7 +86,7 @@ answerForm.addEventListener('submit', (event) => {
 
           statusMessage.innerText = 'Enter Answer!';
 
-     }else if(CURR_ANSWER !== userAnswer.value.toUpperCase() === CURR_ANSWER.toUpperCase()){
+     }else if(userAnswer.value.toUpperCase() === CURR_ANSWER.toUpperCase()){
           questionDisplay.innerHTML = ('Correct Great!');
 
           overlay.style.display = 'none';
